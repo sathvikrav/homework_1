@@ -13,10 +13,13 @@ T serial_reduce(T *A, size_t n) {
 
 template <class T>
 T reduce(T *A, size_t n) {
-  if (n == 0) {
-    return 0;
-  } else if (n == 1) {
-    return A[0];
+  // if (n == 0) {
+  //   return 0;
+  // } else if (n == 1) {
+  //   return A[0];
+  // } 
+  if (n <= 1000) {
+    return serial_reduce(A, n);
   } else {
     T v1, v2;
     auto f1 = [&]() { v1 = reduce(A, n / 2); };
